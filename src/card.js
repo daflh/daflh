@@ -63,15 +63,12 @@ const lowercaseTrim = (name) => name.toLowerCase().trim();
 
 const renderTopLanguages = (topLangs, options = {}) => {
   const {
-    hide_title,
-    hide_border,
+    hide,
+    layout,
     card_width,
     title_color,
     text_color,
-    bg_color,
-    hide,
-    theme,
-    layout,
+    bg_color
   } = options;
 
   let langs = Object.values(topLangs);
@@ -101,7 +98,6 @@ const renderTopLanguages = (topLangs, options = {}) => {
     title_color,
     text_color,
     bg_color,
-    theme,
   });
 
   let width = isNaN(card_width) ? 300 : card_width;
@@ -110,8 +106,7 @@ const renderTopLanguages = (topLangs, options = {}) => {
   let finalLayout = "";
 
   // RENDER COMPACT LAYOUT
-  if (layout !== "normal") {
-  //# if (layout === "compact") {
+  if (layout !== "conventional") {
     width = width + 50;
     height = 30 + (langs.length / 2 + 1) * 40;
 
@@ -185,8 +180,6 @@ const renderTopLanguages = (topLangs, options = {}) => {
   });
 
   card.disableAnimations();
-  card.setHideBorder(hide_border);
-  card.setHideTitle(hide_title);
   card.setCSS(`
     .lang-name { font: 400 11px 'Segoe UI', Ubuntu, Sans-Serif; fill: ${textColor} }
   `);

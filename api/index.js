@@ -1,61 +1,38 @@
 require("dotenv").config();
-const {
-  renderError,
-  clampValue,
-  parseBoolean,
-  parseArray,
-  CONSTANTS,
-} = require("../src/utils");
-const fetchTopLanguages = require("../src/fetcher");
-const renderTopLanguages = require("../src/card");
-const blacklist = require("../src/blacklist");
+const { renderError, parseArray } = require("../src/utils");
+const fetchData = require("../src/fetcher");
+const render = require("../src/card");
 
 module.exports = async (req, res) => {
   const username = "dafiulh";
-  const hide_border = true;
   const {
-    //# username,
     hide,
-    hide_title,
-    //# hide_border,
+    max_lang,
+    layout,
     card_width,
     title_color,
     text_color,
-    bg_color,
-    theme,
-    cache_seconds,
-    layout,
+    bg_color
   } = req.query;
   let topLangs;
 
   res.setHeader("Content-Type", "image/svg+xml");
 
-  if (blacklist.includes(username)) {
-    return res.send(renderError("Something went wrong"));
-  }
-
   try {
-    topLangs = await fetchTopLanguages(username);
+    topLangs = await fetchData(username, parseInt(max_lang || 10, 10));
 
-    const cacheSeconds = clampValue(
-      parseInt(cache_seconds || CONSTANTS.TWO_HOURS, 10),
-      CONSTANTS.TWO_HOURS,
-      CONSTANTS.ONE_DAY
-    );
+    const cacheSeconds = 60 * 60 * 2;
 
     res.setHeader("Cache-Control", `public, max-age=${cacheSeconds}`);
     
     return res.send(
-      renderTopLanguages(topLangs, {
-        hide_title: parseBoolean(hide_title),
-        hide_border: parseBoolean(hide_border),
-        card_width: parseInt(card_width, 10),
+      render(topLangs, {
         hide: parseArray(hide),
+        layout,
+        card_width: parseInt(card_width, 10),
         title_color,
         text_color,
-        bg_color,
-        theme,
-        layout,
+        bg_color
       })
     );
   } catch (err) {

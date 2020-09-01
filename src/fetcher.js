@@ -33,7 +33,7 @@ const fetcher = (variables, token) => {
   );
 };
 
-async function fetchTopLanguages(username) {
+async function fetchTopLanguages(username, max_lang) {
   if (!username) throw Error("Invalid username");
 
   let res = await retryer(fetcher, { login: username });
@@ -73,8 +73,7 @@ async function fetchTopLanguages(username) {
     }, {});
 
   const topLangs = Object.keys(repoNodes)
-    .slice(0, 10)
-    //# .slice(0, 5)
+    .slice(0, max_lang)
     .reduce((result, key) => {
       result[key] = repoNodes[key];
       return result;

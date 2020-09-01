@@ -1,5 +1,4 @@
-const { FlexLayout } = require("./utils");
-const { getAnimations } = require("./getStyles");
+const { getAnimations, FlexLayout } = require("./utils");
 
 class Card {
   constructor({
@@ -12,7 +11,6 @@ class Card {
     this.width = width;
     this.height = height;
 
-    this.hideBorder = false;
     this.hideTitle = false;
 
     // returns theme based colors with proper overrides and defaults
@@ -32,21 +30,6 @@ class Card {
 
   setCSS(value) {
     this.css = value;
-  }
-
-  setHideBorder(value) {
-    this.hideBorder = value;
-  }
-
-  setHideTitle(value) {
-    this.hideTitle = value;
-    if (value) {
-      this.height -= 30;
-    }
-  }
-
-  setTitle(text) {
-    this.title = text;
   }
 
   renderTitle() {
@@ -145,7 +128,7 @@ class Card {
               ? "url(#gradient)"
               : this.colors.bgColor
           }"
-          stroke-opacity="${this.hideBorder ? 0 : 1}"
+          stroke-opacity="0"
         />
 
         ${this.hideTitle ? "" : this.renderTitle()}

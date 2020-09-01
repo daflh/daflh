@@ -1,6 +1,26 @@
 const axios = require("axios");
-const wrap = require("word-wrap");
-const themes = require("./themes");
+
+const getAnimations = () => {
+  return `
+    /* Animations */
+    @keyframes scaleInAnimation {
+      from {
+        transform: translate(-5px, 5px) scale(0);
+      }
+      to {
+        transform: translate(-5px, 5px) scale(1);
+      }
+    }
+    @keyframes fadeInAnimation {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  `;
+};
 
 const renderError = (message, secondaryMessage = "") => {
   return `
@@ -29,26 +49,10 @@ function encodeHTML(str) {
     .replace(/\u0008/gim, "");
 }
 
-function kFormatter(num) {
-  return Math.abs(num) > 999
-    ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "k"
-    : Math.sign(num) * Math.abs(num);
-}
-
 function isValidHexColor(hexColor) {
   return new RegExp(
     /^([A-Fa-f0-9]{8}|[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}|[A-Fa-f0-9]{4})$/
   ).test(hexColor);
-}
-
-function parseBoolean(value) {
-  if (value === "true") {
-    return true;
-  } else if (value === "false") {
-    return false;
-  } else {
-    return value;
-  }
 }
 
 function parseArray(str) {
@@ -112,64 +116,36 @@ function FlexLayout({ items, gap, direction }) {
 function getCardColors({
   title_color,
   text_color,
-  icon_color,
-  bg_color,
-  theme,
-  fallbackTheme = "default",
+  bg_color
 }) {
-  const defaultTheme = themes[fallbackTheme];
-  const selectedTheme = themes[theme] || defaultTheme;
+  const theme = {
+    title_color: "33383d",
+    text_color: "333",
+    bg_color: "fffefe",
+  };
 
   // get the color provided by the user else the theme color
   // finally if both colors are invalid fallback to default theme
   const titleColor = fallbackColor(
-    title_color || selectedTheme.title_color,
-    "#" + defaultTheme.title_color
-  );
-  const iconColor = fallbackColor(
-    icon_color || selectedTheme.icon_color,
-    "#" + defaultTheme.icon_color
+    title_color || theme.title_color,
+    "#" + theme.title_color
   );
   const textColor = fallbackColor(
-    text_color || selectedTheme.text_color,
-    "#" + defaultTheme.text_color
+    text_color || theme.text_color,
+    "#" + theme.text_color
   );
   const bgColor = fallbackColor(
-    bg_color || selectedTheme.bg_color,
-    "#" + defaultTheme.bg_color
+    bg_color || theme.bg_color,
+    "#" + theme.bg_color
   );
 
-  return { titleColor, iconColor, textColor, bgColor };
-}
-
-function wrapTextMultiline(text, width = 60, maxLines = 3) {
-  const wrapped = wrap(encodeHTML(text), { width })
-    .split("\n") // Split wrapped lines to get an array of lines
-    .map((line) => line.trim()); // Remove leading and trailing whitespace of each line
-
-  const lines = wrapped.slice(0, maxLines); // Only consider maxLines lines
-
-  // Add "..." to the last line if the text exceeds maxLines
-  if (wrapped.length > maxLines) {
-    lines[maxLines - 1] += "...";
-  }
-
-  // Remove empty lines if text fits in less than maxLines lines
-  const multiLineText = lines.filter(Boolean);
-  return multiLineText;
+  return { titleColor, textColor, bgColor };
 }
 
 const noop = () => {};
 // return console instance based on the environment
 const logger =
   process.env.NODE_ENV !== "test" ? console : { log: noop, error: noop };
-
-const CONSTANTS = {
-  THIRTY_MINUTES: 1800,
-  TWO_HOURS: 7200,
-  FOUR_HOURS: 14400,
-  ONE_DAY: 86400,
-};
 
 const SECONDARY_ERROR_MESSAGES = {
   MAX_RETRY:
@@ -189,19 +165,13 @@ class CustomError extends Error {
 }
 
 module.exports = {
+  getAnimations,
   renderError,
-  kFormatter,
-  encodeHTML,
-  isValidHexColor,
   request,
   parseArray,
-  parseBoolean,
-  fallbackColor,
   FlexLayout,
   getCardColors,
   clampValue,
-  wrapTextMultiline,
   logger,
-  CONSTANTS,
   CustomError,
 };
