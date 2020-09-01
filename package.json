@@ -1,0 +1,12 @@
+{
+  "name": "dafiulh",
+  "version": "1.0.0",
+  "description": "Self deploy Github Readme Stats from anuraghazra/github-readme-stats",
+  "author": "Dafiul Haq",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "dotenv": "^8.2.0",
+    "word-wrap": "^1.2.3"
+  }
+}
