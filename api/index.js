@@ -4,7 +4,7 @@ const fetchData = require("../src/fetcher");
 const render = require("../src/card");
 
 module.exports = async (req, res) => {
-  const username = "dafiulh";
+  const username = "daflh";
   const {
     hide,
     max_lang,
