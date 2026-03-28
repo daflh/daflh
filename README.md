@@ -1,9 +1,9 @@
 ## Hi, I'm Daffi 👋
 
-I'm a full-stack developer based in Yogyakarta, Indonesia.
+I'm a full-stack web developer based in Yogyakarta, Indonesia.
 
 🎓 Fresh graduate in **Electronics and Instrumentation, Universitas Gadjah Mada**<br>
-❤️‍🔥 Strong interest in **Web Development, Electronics, IoT, and Computer Vision**<br>
+❤️‍🔥 Strong interest in **Web Development, Robotics, IoT, and Computer Vision**<br>
 🔥 Passionate about bridging the gap between **software and real-world hardware**<br>
 ⛏️ **8+ years** of experience digging into the ins and outs of web development<br>
 🧠 Skilled in **TypeScript, JavaScript, Python, PHP, and C++**
