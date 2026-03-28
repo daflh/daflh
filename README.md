@@ -2,11 +2,11 @@
 
 I'm a full-stack developer based in Yogyakarta, Indonesia.
 
-🎓 Fresh graduate in **Electronics and Instrumentation, Universitas Gadjah Mada**.<br>
-❤️‍🔥 Strong interest in **Web Development, Electronics, IoT, and Computer Vision**.<br>
-🔥 Passionate about bridging the gap between **software and real-world hardware**.<br>
-⛏️ **8+ years** of experience digging into the ins and outs of web development.<br>
-🧠 Skilled in **TypeScript, JavaScript, Python, PHP, and C++**.
+🎓 Fresh graduate in **Electronics and Instrumentation, Universitas Gadjah Mada**<br>
+❤️‍🔥 Strong interest in **Web Development, Electronics, IoT, and Computer Vision**<br>
+🔥 Passionate about bridging the gap between **software and real-world hardware**<br>
+⛏️ **8+ years** of experience digging into the ins and outs of web development<br>
+🧠 Skilled in **TypeScript, JavaScript, Python, PHP, and C++**
 
 ### Connect With Me
 <p align="left">
@@ -17,7 +17,7 @@ I'm a full-stack developer based in Yogyakarta, Indonesia.
 </p>
 
 [![Followers](https://img.shields.io/github/followers/daflh?label=follow%20me&style=social)](https://github.com/daflh)
-[![Profile Views](https://komarev.com/ghpvc/?username=daflh&color=blueviolet)](https://github.com/daflh)
+[![Profile Views](https://komarev.com/ghpvc/?username=daflh&color=blueviolet)]()
 
 ---
 
