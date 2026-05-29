@@ -21,4 +21,4 @@ I'm a full-stack web developer based in Yogyakarta, Indonesia.
 
 ---
 
-*"Aspire to inspire before you expire."*
+*"Then which of the favours of your Lord will ye deny?"*
