@@ -19,6 +19,7 @@ I'm a full-stack web developer based in Yogyakarta, Indonesia.
 
 [![Followers](https://img.shields.io/github/followers/daflh?label=follow%20me&style=social)](https://github.com/daflh)
 
+<!--
 ---
-
 *"Then which of the favours of your Lord will ye deny?"*
+-->
